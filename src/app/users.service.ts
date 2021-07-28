@@ -5,16 +5,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UsersService {
+  endpoint= 'https://crudangular1.000webhostapp.com/users.php';
   constructor(private http: HttpClient) {}
-
+  
   getUsers() {
-    return this.http.get('http://localhost/crud-angular/users.php');
+    return this.http.get(this.endpoint);
   }
 
   addUser(formData) {
-    return this.http.post('http://localhost/crud-angular/users.php', formData);
+    return this.http.post(this.endpoint, formData);
   }
   deleteUser(id) {
-    return this.http.get('http://localhost/crud-angular/users.php?id=' + id);
+    return this.http.get(this.endpoint + '?id=' + id);
   }
 }
